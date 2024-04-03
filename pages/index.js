@@ -3,15 +3,13 @@ import { connectToDatabase } from "../libs/mongodb";
 import { Background_music } from "../components";
 import { useState, useEffect } from "react";
 
-let tablecounter = 0;
-let lastscore = 0;
-let totalscore = 0;
-
 //<div className='text-3xl taiko_font_color stroke-black' title="Leaderboards"><span>Leaderboards</span></div>
 
 //<div className="fixed donimation w-[20rem] h-[35rem] animate-bounce -left-[3rem] top-[16rem] scrollbar-hide overflow-hidden"></div>
 
 export default function Home({ users, score_goal, usersranked }) {
+  let tablecounter = 0;
+  let lastscore = 0;
   let totalscore = 0;
   users.forEach((user) => {
     totalscore +=
