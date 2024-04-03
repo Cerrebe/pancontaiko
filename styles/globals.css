@@ -1,3 +1,253 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Taikofont";
+    src: url("/fonts/taikofont.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+  }
+}
+@layer components {
+  .progress-ww {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    text-align: center;
+  }
+
+  .progress-ww span {
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+  }
+
+  .progress-ww span:first-of-type {
+    text-align: right;
+  }
+  .text_border_white {
+    -webkit-text-stroke: 2px #fff;
+  }
+  .text_border_black {
+    -webkit-text-stroke: 2px #000;
+  }
+  .taiko_font_color {
+    background: linear-gradient(to bottom, #ff0000, #ff0000, #fff566);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-decoration: underline;
+  }
+  /* prepare the selectors to add a stroke to */
+  .stroke_single,
+  .stroke_double {
+    position: relative;
+    z-index: 0;
+  }
+
+  /* add a single stroke */
+  .stroke_single:before,
+  .stroke_double:before {
+    content: attr(title);
+    position: absolute;
+    -webkit-text-stroke: 0.02em #471e09;
+    left: 0;
+    z-index: -1;
+  }
+
+  /* add a double stroke */
+  .stroke_double:after {
+    content: attr(title);
+    position: absolute;
+    -webkit-text-stroke: 0.06em #f7d0ab;
+    left: 0;
+    z-index: -2;
+  }
+
+  .leaderboards-text {
+    background-image: url("/lb-text.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+  .donimation {
+    background-image: url("/dch1.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .donimation2 {
+    background-image: url("/dch2.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .donpozolero {
+    background-image: url("/pozolero.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .kanimation {
+    background-image: url("/kch1.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .kanimation2 {
+    background-image: url("/kch22.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .pantotzka {
+    background-image: url("/pantotzkabg.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  .tooltip .tiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    padding: 6px 0;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  .tooltip .tiptext::after {
+    content: "";
+    position: absolute;
+    border-width: 5px;
+    border-style: solid;
+  }
+  .tooltip:hover .tiptext {
+    visibility: visible;
+  }
+  .tooltip.top .tiptext {
+    margin-left: -60px;
+    bottom: 110%;
+    left: 50%;
+  }
+  .tooltip.top .tiptext::after {
+    margin-left: -5px;
+    top: 100%;
+    left: 50%;
+    border-color: #2e2e2e transparent transparent transparent;
+  }
+  .rainbow {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 32px;
+    font-family: monospace;
+    letter-spacing: 5px;
+  }
+  .rainbow_bg_animated {
+    background: linear-gradient(
+      to right,
+      #ff6666,
+      #fff566,
+      #69ff66,
+      #66ffff,
+      #6966ff,
+      #eb66ff,
+      #ff6666,
+      #fff566,
+      #69ff66
+    );
+    color: transparent;
+    animation: rainbow_animation 5s linear infinite;
+    animation-direction: normal infinite;
+    background-size: 400% 100%;
+  }
+  .rainbow_text_animated {
+    background: linear-gradient(
+      to right,
+      #ff6666,
+      #fff566,
+      #69ff66,
+      #66ffff,
+      #6966ff,
+      #eb66ff,
+      #ff6666,
+      #fff566,
+      #69ff66
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow_animation 5s linear infinite;
+    animation-direction: normal infinite;
+    background-size: 400% 100%;
+  }
+  .paper_bounce {
+    animation: paper_bounce 2330ms infinite;
+  }
+  .paper_bounce_logo {
+    animation: paper_bounce_logo 2330ms infinite;
+  }
+
+  @keyframes rainbow_animation {
+    0% {
+      background-position: 100% 0;
+    }
+
+    100% {
+      background-position: 0 0;
+    }
+  }
+  @keyframes paper_bounce {
+    0%,
+    100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0, 1, 0.4, 1);
+    }
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 1, 0.4, 1);
+    }
+  }
+  @keyframes paper_bounce_logo {
+    0%,
+    100% {
+      transform: translateY(-15%);
+      animation-timing-function: cubic-bezier(0, 1, 0.4, 1);
+    }
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 1, 0.4, 1);
+    }
+  }
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: url("/ttbg.png");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/*
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+*/
