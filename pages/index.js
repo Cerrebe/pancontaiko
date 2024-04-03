@@ -8,8 +8,6 @@ import { useState, useEffect } from "react";
 //<div className="fixed donimation w-[20rem] h-[35rem] animate-bounce -left-[3rem] top-[16rem] scrollbar-hide overflow-hidden"></div>
 
 export default function Home({ users, score_goal, usersranked }) {
-  let tablecounter = 0;
-  let lastscore = 0;
   let totalscore = 0;
   users.forEach((user) => {
     totalscore +=
@@ -79,11 +77,13 @@ export default function Home({ users, score_goal, usersranked }) {
           </div>
         </div>
       </div>
-      <div className="container mx-auto my-auto xl:w-[55%]">
-        <div className="block mx-auto my-auto py-auto bg-orange-200 border-black rounded-lg border-4">
-          <div className="relative leaderboards-text w-[14rem] h-[3rem] bottom-8 my-0 py-0"></div>
-          <div className="relative bottom-6">
-            <table className="table w-full my-2 overflow-hidden table-auto">
+      <div className="container mx-auto xl:w-[55%]">
+        <div className="block mx-auto bg-orange-200 border-black rounded-lg border-4">
+          <div className="relative w-[14rem] h-[2rem] bottom-8 z-20">
+            <div className="absolute leaderboards-text w-[14rem] h-[3rem]" />
+          </div>
+          <div className="relative">
+            <table className="table w-full overflow-hidden table-auto">
               <thead className="table-header-group text-2xl">
                 <tr className="table-row w-full">
                   <th className="table-cell w-[16%] text-left pb-5 pt-1 pl-2">
@@ -97,28 +97,24 @@ export default function Home({ users, score_goal, usersranked }) {
                   </th>
                 </tr>
               </thead>
-              <div className="hidden">{(tablecounter = 0)}</div>
               {usersranked.map((user, id) => (
                 <thead key={user.username} className="table-row-group text-lg">
                   <tr
                     className={
-                      tablecounter++ % 2 != 0
-                        ? "table-row bg-orange-300"
-                        : "table-row"
+                      (id + 1) % 2 == 0
+                        ? "table-row bg-orange-400 bg-opacity-20"
+                        : "table-row bg-orange-300"
                     }
                   >
                     <td className="table-cell pl-8 py-2">{id + 1}</td>
-                    <td className="table-cell py-2">{user.username}</td>
+                    <td className="table-cell py-2 pl-1">{user.username}</td>
                     <td className="table-cell py-2">
                       <div className="md:inline-block md:w-[31%]">
-                        {
-                          (lastscore =
-                            user.scores[0].easy +
-                            user.scores[0].normal +
-                            user.scores[0].hard +
-                            user.scores[0].oni +
-                            user.scores[0].uraoni)
-                        }
+                        {user.scores[0].easy +
+                          user.scores[0].normal +
+                          user.scores[0].hard +
+                          user.scores[0].oni +
+                          user.scores[0].uraoni}
                         点
                       </div>
                       <div className="md:inline-block md:w-[69%]">
