@@ -97,6 +97,7 @@ export default function Home({ users, score_goal, usersranked }) {
                   </th>
                 </tr>
               </thead>
+              <div className="hidden">{(tablecounter = 0)}</div>
               {usersranked.map((user, id) => (
                 <thead key={user.username} className="table-row-group text-lg">
                   <tr
