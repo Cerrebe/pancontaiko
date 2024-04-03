@@ -228,6 +228,7 @@ export default function Home({ users, score_goal, usersranked }) {
           <a
             href="https://www.youtube.com/watch?v=SxYBbTyPQLI"
             target="_blank"
+            rel="noopener noreferrer"
             className="w-full h-1/2 absolute"
           ></a>
         </div>
