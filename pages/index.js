@@ -46,6 +46,7 @@ export default function Home({ users, score_goal, usersranked }) {
           >
             <div className={playSubmitSound ? "pantotzka" : ""}>
               <Image
+                key="xd"
                 src={playSubmitSound ? "/pantotzka.png" : "/pantaikologo2.png"}
                 width={playSubmitSound ? 1056 / 2 : 1290 / 2}
                 height={576 / 2}
