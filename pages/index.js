@@ -31,8 +31,9 @@ export default function Home({ users, score_goal, usersranked }) {
         onFinish="loop"
       />
       <div className="text-center">
-        <div className="container w-full h-full mx-auto py-5 text-center relative">
+        <div className="container w-[90%] h-[90%] md:w-full md:h-full mx-auto py-5 text-center relative">
           <button
+            className="cursor-default"
             onClick={() => {
               musicHandler();
             }}
@@ -55,7 +56,7 @@ export default function Home({ users, score_goal, usersranked }) {
           </button>
         </div>
       </div>
-      <div className="container mx-auto my-auto py-auto xl:w-[55%]">
+      <div className="container mx-auto my-auto py-auto w-[90%] xl:w-[55%]">
         <div className="block">
           <div className="border-4 border-black shadow-2xl rounded-lg my-2 bg-gray-600">
             <div
@@ -71,11 +72,12 @@ export default function Home({ users, score_goal, usersranked }) {
             {completion}%
           </div>
           <div className="text-5xl z-20 relative top-[-3rem] text-center">
-            <span>{totalscore}点</span>/<span>{score_goal.score_goal}点</span>
+            <span>{totalscore + "点"}</span>/
+            <span>{score_goal.score_goal + "点"}</span>
           </div>
         </div>
       </div>
-      <div className="container mx-auto xl:w-[55%]">
+      <div className="container mx-auto w-[95%] xl:w-[55%]">
         <div className="block mx-auto bg-orange-200 border-black rounded-lg border-4">
           <div className="relative w-[14rem] h-[2rem] bottom-8 z-20">
             <div className="absolute leaderboards-text w-[14rem] h-[3rem]" />
@@ -84,13 +86,13 @@ export default function Home({ users, score_goal, usersranked }) {
             <table className="table w-full overflow-hidden table-auto">
               <thead className="table-header-group text-2xl">
                 <tr className="table-row w-full">
-                  <th className="table-cell w-[16%] text-left pb-5 pt-1 pl-2">
+                  <th className="table-cell sm:w-[16%] sm:overflow-auto text-left pb-5 pt-1 pl-2 text-xl sm:text-2xl">
                     Rank
                   </th>
-                  <th className="table-cell w-[34%] text-left pb-5 pt-1">
+                  <th className="table-cell w-[50%] sm:w-[34%] text-center sm:text-left pb-5 pt-1 text-xl sm:text-2xl">
                     User
                   </th>
-                  <th className="table-cell w-[50%] text-left pb-5 pt-1">
+                  <th className="table-cell w-[50%] sm:w-[50%] text-center sm:text-left pb-5 pt-1 text-xl sm:text-2xl">
                     Score
                   </th>
                 </tr>
@@ -104,25 +106,29 @@ export default function Home({ users, score_goal, usersranked }) {
                         : "table-row bg-orange-300"
                     }
                   >
-                    <td className="table-cell pl-8 py-2">{id + 1}</td>
-                    <td className="table-cell py-2 pl-1">{user.username}</td>
+                    <td className="table-cell sm:pl-8 py-2 text-center sm:text-left">
+                      {id + 1}
+                    </td>
+                    <td className="table-cell py-2 text-center break-all overflow-ellipsis sm:text-left sm:overflow-auto sm:pl-1">
+                      {user.username}
+                    </td>
                     <td className="table-cell py-2">
-                      <div className="md:inline-block md:w-[31%]">
+                      <div className="md:inline-block md:w-[31%] text-center sm:text-left">
                         {user.scores[0].easy +
                           user.scores[0].normal +
                           user.scores[0].hard +
                           user.scores[0].oni +
-                          user.scores[0].uraoni}
-                        点
+                          user.scores[0].uraoni +
+                          "点"}
                       </div>
-                      <div className="md:inline-block md:w-[69%]">
-                        <div className="object-contain inline-block w-10 tooltip top">
+                      <div className="md:inline-block md:w-[69%] text-center sm:text-left">
+                        <div className="object-contain inline-block w-8 sm:w-10 tooltip top">
                           <span
                             className={
                               user.scores[0].easy > 0 ? "tiptext" : "hidden"
                             }
                           >
-                            {user.scores[0].easy}点
+                            {user.scores[0].easy + "点"}
                           </span>
                           <img
                             draggable={false}
@@ -130,18 +136,18 @@ export default function Home({ users, score_goal, usersranked }) {
                             src="/difficulty_Easy.png"
                             className={
                               user.scores[0].easy > 0
-                                ? "object-contain max-h-8 inline-block md:mx-1 select-none pointer-events-none"
-                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
+                                ? "object-contain w-7 h-7 sm:w-8 sm:h-8 max-h-8 inline-block md:mx-1 select-none pointer-events-none"
+                                : "object-contain w-7 h-7 sm:w-8 sm:h-8 max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
                             }
                           />
                         </div>
-                        <div className="object-contain inline-block w-10 tooltip top">
+                        <div className="object-contain inline-block w-8 sm:w-10 tooltip top">
                           <span
                             className={
                               user.scores[0].normal > 0 ? "tiptext" : "hidden"
                             }
                           >
-                            {user.scores[0].normal}点
+                            {user.scores[0].normal + "点"}
                           </span>
                           <img
                             draggable={false}
@@ -149,18 +155,18 @@ export default function Home({ users, score_goal, usersranked }) {
                             src="/difficulty_Normal.png"
                             className={
                               user.scores[0].normal > 0
-                                ? "object-contain max-h-8 inline-block md:mx-1 select-none pointer-events-none"
-                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
+                                ? "object-contain w-7 h-7 sm:w-8 sm:h-8 max-h-8 inline-block md:mx-1 select-none pointer-events-none"
+                                : "object-contain w-7 h-7 sm:w-8 sm:h-8 max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
                             }
                           />
                         </div>
-                        <div className="object-contain inline-block w-10 tooltip top">
+                        <div className="object-contain inline-block w-8 sm:w-10 tooltip top">
                           <span
                             className={
                               user.scores[0].hard > 0 ? "tiptext" : "hidden"
                             }
                           >
-                            {user.scores[0].hard}点
+                            {user.scores[0].hard + "点"}
                           </span>
                           <img
                             draggable={false}
@@ -168,18 +174,18 @@ export default function Home({ users, score_goal, usersranked }) {
                             src="/difficulty_Hard.png"
                             className={
                               user.scores[0].hard > 0
-                                ? "object-contain max-h-8 inline-block md:mx-1 select-none pointer-events-none"
-                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
+                                ? "object-contain w-7 h-7 sm:w-8 sm:h-8 max-h-8 inline-block md:mx-1 select-none pointer-events-none"
+                                : "object-contain w-7 h-7 sm:w-8 sm:h-8 max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
                             }
                           />
                         </div>
-                        <div className="object-contain inline-block w-10 tooltip top">
+                        <div className="object-contain inline-block w-8 sm:w-10 tooltip top">
                           <span
                             className={
                               user.scores[0].oni > 0 ? "tiptext" : "hidden"
                             }
                           >
-                            {user.scores[0].oni}点
+                            {user.scores[0].oni + "点"}
                           </span>
                           <img
                             draggable={false}
@@ -187,18 +193,18 @@ export default function Home({ users, score_goal, usersranked }) {
                             src="/difficulty_Oni.png"
                             className={
                               user.scores[0].oni > 0
-                                ? "object-contain max-h-8 inline-block md:mx-1 select-none pointer-events-none"
-                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
+                                ? "object-contain w-7 h-7 sm:w-8 sm:h-8 max-h-8 inline-block md:mx-1 select-none pointer-events-none"
+                                : "object-contain w-7 h-7 sm:w-8 sm:h-8 max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
                             }
                           />
                         </div>
-                        <div className="object-contain inline-block w-10 tooltip top">
+                        <div className="object-contain inline-block w-8 sm:w-10 tooltip top">
                           <span
                             className={
                               user.scores[0].uraoni > 0 ? "tiptext" : "hidden"
                             }
                           >
-                            {user.scores[0].uraoni}点
+                            {user.scores[0].uraoni + "点"}
                           </span>
                           <img
                             draggable={false}
@@ -206,8 +212,8 @@ export default function Home({ users, score_goal, usersranked }) {
                             src="/difficulty_UraOni.png"
                             className={
                               user.scores[0].uraoni > 0
-                                ? "object-contain max-h-8 inline-block md:mx-1 select-none pointer-events-none"
-                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
+                                ? "object-contain w-7 h-7 sm:w-8 sm:h-8 max-h-8 inline-block md:mx-1 select-none pointer-events-none"
+                                : "object-contain w-7 h-7 sm:w-8 sm:h-8 max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
                             }
                           />
                         </div>
@@ -232,7 +238,7 @@ export default function Home({ users, score_goal, usersranked }) {
             href="https://www.youtube.com/watch?v=SxYBbTyPQLI"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full h-1/2 absolute"
+            className="w-full h-1/2 absolute cursor-default"
           ></a>
         </div>
         <div
@@ -247,7 +253,7 @@ export default function Home({ users, score_goal, usersranked }) {
           }
         >
           <button
-            className="w-full h-1/2 absolute"
+            className="w-full h-1/2 absolute cursor-default"
             onClick={() => {
               setPozolero(!pozolero);
             }}
