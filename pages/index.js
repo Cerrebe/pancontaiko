@@ -1,11 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { connectToDatabase } from "../libs/mongodb";
 import { Background_music } from "../components";
-import { useState, useEffect } from "react";
-
-//<div className='text-3xl taiko_font_color stroke-black' title="Leaderboards"><span>Leaderboards</span></div>
-
-//<div className="fixed donimation w-[20rem] h-[35rem] animate-bounce -left-[3rem] top-[16rem] scrollbar-hide overflow-hidden"></div>
+import { useState } from "react";
 
 export default function Home({ users, score_goal, usersranked }) {
   let totalscore = 0;
@@ -42,6 +39,7 @@ export default function Home({ users, score_goal, usersranked }) {
           >
             <div className={playSubmitSound ? "pantotzka" : ""}>
               <Image
+                draggable={false}
                 alt=""
                 src={playSubmitSound ? "/pantotzka.png" : "/pantaikologo2.png"}
                 width={playSubmitSound ? 1056 / 2 : 1290 / 2}
@@ -90,7 +88,7 @@ export default function Home({ users, score_goal, usersranked }) {
                     Rank
                   </th>
                   <th className="table-cell w-[34%] text-left pb-5 pt-1">
-                    Usuario
+                    User
                   </th>
                   <th className="table-cell w-[50%] text-left pb-5 pt-1">
                     Score
@@ -127,11 +125,13 @@ export default function Home({ users, score_goal, usersranked }) {
                             {user.scores[0].easy}点
                           </span>
                           <img
+                            draggable={false}
+                            alt=""
                             src="/difficulty_Easy.png"
                             className={
                               user.scores[0].easy > 0
-                                ? "object-contain max-h-8 inline-block md:mx-1"
-                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200"
+                                ? "object-contain max-h-8 inline-block md:mx-1 select-none pointer-events-none"
+                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
                             }
                           />
                         </div>
@@ -144,11 +144,13 @@ export default function Home({ users, score_goal, usersranked }) {
                             {user.scores[0].normal}点
                           </span>
                           <img
+                            draggable={false}
+                            alt=""
                             src="/difficulty_Normal.png"
                             className={
                               user.scores[0].normal > 0
-                                ? "object-contain max-h-8 inline-block md:mx-1"
-                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200"
+                                ? "object-contain max-h-8 inline-block md:mx-1 select-none pointer-events-none"
+                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
                             }
                           />
                         </div>
@@ -161,11 +163,13 @@ export default function Home({ users, score_goal, usersranked }) {
                             {user.scores[0].hard}点
                           </span>
                           <img
+                            draggable={false}
+                            alt=""
                             src="/difficulty_Hard.png"
                             className={
                               user.scores[0].hard > 0
-                                ? "object-contain max-h-8 inline-block md:mx-1"
-                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200"
+                                ? "object-contain max-h-8 inline-block md:mx-1 select-none pointer-events-none"
+                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
                             }
                           />
                         </div>
@@ -178,11 +182,13 @@ export default function Home({ users, score_goal, usersranked }) {
                             {user.scores[0].oni}点
                           </span>
                           <img
+                            draggable={false}
+                            alt=""
                             src="/difficulty_Oni.png"
                             className={
                               user.scores[0].oni > 0
-                                ? "object-contain max-h-8 inline-block md:mx-1"
-                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200"
+                                ? "object-contain max-h-8 inline-block md:mx-1 select-none pointer-events-none"
+                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
                             }
                           />
                         </div>
@@ -195,11 +201,13 @@ export default function Home({ users, score_goal, usersranked }) {
                             {user.scores[0].uraoni}点
                           </span>
                           <img
+                            draggable={false}
+                            alt=""
                             src="/difficulty_UraOni.png"
                             className={
                               user.scores[0].uraoni > 0
-                                ? "object-contain max-h-8 inline-block md:mx-1"
-                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200"
+                                ? "object-contain max-h-8 inline-block md:mx-1 select-none pointer-events-none"
+                                : "object-contain max-h-8 inline-block md:mx-1 filter grayscale contrast-200 select-none pointer-events-none"
                             }
                           />
                         </div>
